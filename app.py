@@ -176,18 +176,28 @@ if submit:
         st.warning("Moderate Risk — monitor and consult if needed.")
     else:
         st.error("High Risk — please consult a healthcare professional.")
+# Add button
+notion_url = "https://dandy-onyx-fa3.notion.site/How-to-Reduce-Stroke-Risk-2b78283a207c8037a169f599befba49e"
 
-    st.markdown("---")
-    if st.button("Click here to learn how to reduce stroke risk ➜"):
-        # open a simple reduce-risk content in a new tab or navigate
-        # Streamlit multi-page navigation works with separate files;
-        # fallback: show tips inline if separate page not available.
-        st.write("### Ways to reduce stroke risk")
-        st.write("- Maintain a healthy diet (low salt, whole grains, fruits & veg).")
-        st.write("- Exercise 30 minutes daily.")
-        st.write("- Monitor and control blood pressure.")
-        st.write("- Quit smoking and avoid excessive alcohol.")
-        st.write("- Follow up with your doctor for personalised advice.")
-
+st.markdown(
+    f"""
+    <div style="text-align:center; margin-top:25px;">
+        <a href="{notion_url}" target="_blank">
+            <button style="
+                background-color:#4A90E2;
+                color:white;
+                padding:14px 28px;
+                border:none;
+                border-radius:8px;
+                font-size:18px;
+                cursor:pointer;
+            ">
+                Learn How to Reduce Stroke Risk ➜
+            </button>
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
