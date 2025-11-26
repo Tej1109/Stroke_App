@@ -5,7 +5,15 @@
 
 
 # -----------------------------------------------------------------
+import pandas as pd
+from imblearn.over_sampling import SMOTE
 
+class SMOTEWithColumns(SMOTE):
+    def fit_resample(self, X, y):
+        X_res, y_res = super().fit_resample(X, y)
+        if isinstance(X, pd.DataFrame):
+            X_res = pd.DataFrame(X_res, columns=X.columns)
+        return X_res, y_res
 # ---------------- ACTUAL IMPORTS (mirror your Colab notebook) ----------------
 from sklearn.experimental import enable_iterative_imputer  # using iterative imputer for regression imputing
 
@@ -47,16 +55,7 @@ from catboost import CatBoostClassifier
 
 # ---------------- SMOTEWithColumns CLASS (necessary) ----------------
 
-class SMOTEWithColumns(SMOTE):
-    """
-    SMOTE that preserves DataFrame column names after resampling.
-    Mirrors your original notebook class exactly.
-    """
-    def fit_resample(self, X, y):
-        X_res, y_res = super().fit_resample(X, y)
-        if isinstance(X, pd.DataFrame):
-            X_res = pd.DataFrame(X_res, columns=X.columns)
-        return X_res, y_res
+
 # ----------------------------------------------------------------------
 
 # ---------------- Streamlit UI + Model Loading ----------------
@@ -189,5 +188,6 @@ if submit:
         st.write("- Monitor and control blood pressure.")
         st.write("- Quit smoking and avoid excessive alcohol.")
         st.write("- Follow up with your doctor for personalised advice.")
+
 
 
