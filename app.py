@@ -74,7 +74,6 @@ from catboost import CatBoostClassifier
 # -----------------------------------------------------------------------------
 
 # ---------------- SMOTEWithColumns CLASS (necessary) ----------------
-import pandas as pd as_pd  # keep pd as primary, use wrapper name to avoid confusion
 
 class SMOTEWithColumns(SMOTE):
     """
@@ -218,3 +217,4 @@ if submit:
         st.write("- Monitor and control blood pressure.")
         st.write("- Quit smoking and avoid excessive alcohol.")
         st.write("- Follow up with your doctor for personalised advice.")
+
