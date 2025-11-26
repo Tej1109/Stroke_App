@@ -3,35 +3,7 @@
 # auto-installs missing packages, defines SMOTEWithColumns, loads your pipeline,
 # and provides the UI (gauge, chatbot, nav to reduce-risk page).
 
-# ---------------- AUTO-INSTALL REQUIRED LIBRARIES ----------------
-import subprocess
-import sys
 
-required = [
-    "numpy",
-    "pandas",
-    "matplotlib",
-    "seaborn",
-    "scikit-learn",
-    "xgboost",
-    "lightgbm",
-    "catboost",
-    "imbalanced-learn",
-    "joblib",
-    "shap",
-    "streamlit",
-    "plotly"
-]
-
-def pip_install(pkg):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
-
-for pkg in required:
-    try:
-        __import__(pkg.replace("-", "_"))
-    except Exception:
-        # attempt install (catboost sometimes needs special handling but pip should work)
-        pip_install(pkg)
 # -----------------------------------------------------------------
 
 # ---------------- ACTUAL IMPORTS (mirror your Colab notebook) ----------------
@@ -217,4 +189,5 @@ if submit:
         st.write("- Monitor and control blood pressure.")
         st.write("- Quit smoking and avoid excessive alcohol.")
         st.write("- Follow up with your doctor for personalised advice.")
+
 
